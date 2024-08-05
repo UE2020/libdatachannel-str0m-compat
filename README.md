@@ -1,5 +1,7 @@
 # Usage
-First, run the libdatachannel side.
+First, clone this repo with `--recursive` (so that git submodules work).
+
+Then, run the libdatachannel side.
 ```
 make
 ./libdatachannel-side
