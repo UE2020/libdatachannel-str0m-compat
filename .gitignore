@@ -1,1 +1,9 @@
 /str0m-side/target
+
+*.exe
+*.so
+*.o
+*.a
+libdatachannel-side/libdatachannel-side
+libdatachannel-side/obj
+libdatachannel-side/compile_commands.json

@@ -1,0 +1,20 @@
+[paths]
+output = "libdatachannel-side"
+source = ["."]
+include = ["libdatachannel/include"]
+artifact = "obj"
+
+[options]
+compilation-flags = "-Wall -std=c++17 -g"
+libraries = ["ssl", "crypto"]
+static-libraries = [
+	"libdatachannel/build/libdatachannel-static.a",
+	"libdatachannel/build/deps/libjuice/libjuice-static.a",
+	"libdatachannel/build/deps/libsrtp/libsrtp2.a",
+	"libdatachannel/build/deps/usrsctp/usrsctplib/libusrsctp.a"
+]
+preludes = ["cd libdatachannel && cmake -B build -DUSE_GNUTLS=0 -DUSE_NICE=0 -DCMAKE_BUILD_TYPE=Release > /dev/null && cd build && $(MAKE) datachannel-static"]
+clean-preludes = ["rm -rf libdatachannel/build"]
+
+[env.OS.Windows_NT.options]
+libraries = ["ssl", "crypto", "ws2_32"]
